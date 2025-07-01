@@ -1,22 +1,38 @@
 name: Build & Deploy to Firebase Hosting
+
 on: [push]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
+      # 1. Checkout your code
       - uses: actions/checkout@v3
 
+      # (Optional) Ensure a supported Node version
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # 2. Install project deps
       - name: Install dependencies
+        working-directory: anthony-site
         run: npm ci
-        working-directory: anthony-site
 
+      # 3. Build your site
       - name: Build
-        run: npm run build
         working-directory: anthony-site
+        run: npm run build
 
+      # 4. Install the Firebase CLI so “firebase” exists
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      # 5. Deploy to Firebase
       - name: Deploy to Firebase Hosting
+        working-directory: anthony-site
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         run: firebase deploy --only hosting
-        working-directory: anthony-site
