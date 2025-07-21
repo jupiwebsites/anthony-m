@@ -7,42 +7,34 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: read            # for checkout
-      id-token: write           # needed for OIDC
+      contents: read        # allow checkout
+      id-token: write       # allow minting OIDC token
 
     steps:
-      # 1. Checkout your code
       - uses: actions/checkout@v3
 
-      # 2. Authenticate to GCP via Workload Identity Federation
       - name: Authenticate to GCP
         uses: google-github-actions/auth@v1
         with:
-          # Your pool/provider from Cloud Shell:
           workload_identity_provider: projects/903798418406/locations/global/workloadIdentityPools/github-pool/providers/github-provider
           service_account: github-deploy-sa@hardy-unison-464600-m6.iam.gserviceaccount.com
 
-      # 3. Use Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      # 4. Install deps
       - name: Install dependencies
         working-directory: anthony-site
         run: npm ci
 
-      # 5. Build
       - name: Build
         working-directory: anthony-site
         run: npm run build
 
-      # 6. Install Firebase CLI
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
-      # 7. Deploy
       - name: Deploy to Firebase Hosting
         working-directory: anthony-site
         run: firebase deploy --only hosting
