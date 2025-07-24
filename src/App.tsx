@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg' // ✅ relative path fix
+import viteLogo from './assets/vite.svg'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -8,12 +8,9 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6">
       <div className="flex space-x-6 mb-6">
-        {/* Vite logo */}
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src={viteLogo} className="h-16" alt="Vite logo" />
         </a>
-
-        {/* React logo */}
         <a href="https://react.dev" target="_blank" rel="noreferrer">
           <img src={reactLogo} className="h-16" alt="React logo" />
         </a>
