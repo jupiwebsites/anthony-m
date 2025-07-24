@@ -23,12 +23,16 @@ function App() {
 
       <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 mb-4">
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
           onClick={() => setCount(count + 1)}
         >
           count is {count}
         </button>
       </div>
+
+      <p className="text-sm text-gray-400 dark:text-gray-400">
+        Edit <code className="bg-gray-200 dark:bg-gray-700 px-1 rounded">src/App.tsx</code> and save to test HMR.
+      </p>
     </div>
   )
 }
