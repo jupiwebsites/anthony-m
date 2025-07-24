@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+import viteLogo from './assets/vite.svg' // ✅ correct import
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,14 +20,14 @@ function App() {
 
       <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 mb-4">
         <button
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
           onClick={() => setCount(count + 1)}
         >
           count is {count}
         </button>
       </div>
 
-      <p className="text-sm text-gray-400 dark:text-gray-400">
+      <p className="text-sm text-gray-500 dark:text-gray-400">
         Edit <code className="bg-gray-200 dark:bg-gray-700 px-1 rounded">src/App.tsx</code> and save to test HMR.
       </p>
     </div>
