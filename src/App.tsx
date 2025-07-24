@@ -1,16 +1,17 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
+<<<<<<< HEAD
 import viteLogo from './assets/vite.svg'    // ← now a relative import!
+=======
+>>>>>>> 3735eaa (fix: import vite.svg from assets to unblock build)
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6">
+      {/* Only the React logo now */}
       <div className="flex space-x-6 mb-6">
-        <a href="https://vite.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="h-16" alt="Vite logo" />
-        </a>
         <a href="https://react.dev" target="_blank" rel="noreferrer">
           <img src={reactLogo} className="h-16" alt="React logo" />
         </a>
